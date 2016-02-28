@@ -3,7 +3,7 @@
 # NZBGet Setup
 # Adding to separate script to keep container layers to a minimal
 
-apk --update add openssl
+apk --update add openssl wget
 
 addgroup -g 1000 nzbget
 adduser -H -D -G nzbget -s /bin/false -u 1000 nzbget

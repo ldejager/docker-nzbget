@@ -1,6 +1,14 @@
-FROM alpine:3.3
+FROM alpine:latest
+MAINTAINER Leon de Jager <leondejager@gmail.com>
 
-RUN apk --update add openssl jq \
- && wget -qO /tmp/nzbget.run $(wget -qO- https://api.github.com/repos/nzbget/nzbget/releases/latest | jq -r '.name') \
- && sh /tmp/nzbget.run \
- && rm /tmp/nzbget.run
+ADD install.sh
+
+RUN chmod +x /install.sh && sh /install.sh
+
+VOLUME /config /downloads
+
+EXPOSE 6789
+
+USER nzbget
+
+ENTRYPOINT ["/nzbget/nzbget", "-s", "-o", "OutputMode=log", "-c", "/config/nzbget.conf"]

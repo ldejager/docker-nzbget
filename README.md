@@ -1,2 +1,3 @@
-# docker-nzbget
-NZBGet on Docker
+# NZBGet on Docker
+
+Dockerfile for building a NZBGet image.

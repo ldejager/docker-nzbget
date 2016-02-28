@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Leon de Jager <leondejager@gmail.com>
 
-ADD install.sh
+ADD install.sh /install.sh
 
 RUN chmod +x /install.sh && sh /install.sh
 
